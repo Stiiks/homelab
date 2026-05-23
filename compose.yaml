@@ -4,3 +4,4 @@ include:
   - ./includes/network.yaml
   - ./includes/download.yaml
   - ./includes/apps-arr.yaml
+  - ./includes/media-center.yaml
