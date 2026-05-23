@@ -1,0 +1,4 @@
+name: homelab
+
+include:
+  - ./includes/network.yaml

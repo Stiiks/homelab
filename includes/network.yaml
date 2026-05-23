@@ -1,0 +1,28 @@
+networks:
+  proxy-network:
+    name: homelab-proxy-network
+    driver: bridge
+
+services:
+  swag:
+    image: lscr.io/linuxserver/swag:latest
+    container_name: swag
+    cap_add:
+      - NET_ADMIN # Add NET_ADMIN capability to allow the container to manage network settings
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - URL=${URL}
+      - SUBDOMAINS=${SUBDOMAINS}
+      - VALIDATION=${VALIDATION}
+      - DNSPLUGIN=${DNSPLUGIN}
+      - EMAIL=${EMAIL}
+    volumes:
+      - ${PATH_SYSTEM_CONFIG}/swag:/config
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - proxy-network
+    restart: unless-stopped
