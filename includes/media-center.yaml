@@ -31,7 +31,7 @@ services:
     ports:
       - 127.0.0.1:5055:5055
     volumes:
-      - ${PATH_SYSTEM_CONFIG}/seerr:/config
+      - ${PATH_SYSTEM_CONFIG}/seerr:/app/config
     networks:
       - proxy-network
     restart: unless-stopped
