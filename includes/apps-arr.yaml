@@ -1,0 +1,17 @@
+networks:
+  proxy-network:
+    external: true
+
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${PATH_SYSTEM_CONFIG}/prowlarr:/config
+    networks:
+      - proxy-network
+    restart: unless-stopped
