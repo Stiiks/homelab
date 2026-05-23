@@ -2,3 +2,4 @@ name: homelab
 
 include:
   - ./includes/network.yaml
+  - ./includes/download.yaml
