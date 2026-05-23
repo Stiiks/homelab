@@ -43,3 +43,28 @@ services:
     networks:
       - proxy-network
     restart: unless-stopped
+
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${PATH_SYSTEM_CONFIG}/bazarr:/config
+      - ${PATH_MEDIA_STORAGE}:/data
+    networks:
+      - proxy-network
+    restart: unless-stopped
+
+  flaresolver:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    environment:
+      - TZ=${TZ}
+      - LOG_LEVEL=info
+      - CAPTCHA_SOLVER=none
+    networks:
+      - proxy-network
+    restart: unless-stopped
